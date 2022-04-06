@@ -11,16 +11,16 @@ find_package(ament_cmake_ros REQUIRED)
 find_package(rqt_image_overlay_layer REQUIRED)
 find_package(vision_msgs REQUIRED)
 
+set(THIS_PACKAGE_INCLUDE_DEPENDS
+  rqt_image_overlay_layer
+  vision_msgs)
+
 add_library(bounding_box_2d src/bounding_box_2d.cpp)
 target_compile_features(bounding_box_2d PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 target_include_directories(bounding_box_2d PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-ament_target_dependencies(
-  bounding_box_2d
-  "rqt_image_overlay_layer"
-  "vision_msgs"
-)
+ament_target_dependencies(bounding_box_2d ${THIS_PACKAGE_INCLUDE_DEPENDS})
 pluginlib_export_plugin_description_file(rqt_image_overlay_layer plugins.xml)
 
 # Causes the visibility macros to use dllexport rather than dllimport,
@@ -53,5 +53,6 @@ ament_export_libraries(
 ament_export_targets(
   export_${PROJECT_NAME}
 )
+ament_export_dependencies(${THIS_PACKAGE_INCLUDE_DEPENDS})
 
 ament_package()
