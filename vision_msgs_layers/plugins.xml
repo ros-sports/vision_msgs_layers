@@ -1,0 +1,5 @@
+<library path="bounding_box_2d">
+  <class type="vision_msgs_layers::BoundingBox2D" base_class_type="rqt_image_overlay_layer::PluginInterface">
+    <description>This is an rqt_image_overlay layer for vision_msgs::BoundingBox2D</description>
+  </class>
+</library>
