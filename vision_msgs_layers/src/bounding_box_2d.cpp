@@ -29,7 +29,7 @@ void BoundingBox2D::overlay(
   painter.setPen(pen);
 
   // Draw Bounding Box and Confidence
-  painter.translate(msg.center.position.x, msg.center.position.y);
+  painter.translate(msg.center.x, msg.center.y);
   painter.rotate(-msg.center.theta * 180.0 / 3.141592654);
   painter.drawRect(-msg.size_x / 2, -msg.size_y / 2, msg.size_x, msg.size_y);
 
